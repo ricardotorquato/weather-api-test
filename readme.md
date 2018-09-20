@@ -9,3 +9,7 @@ The idea is provide:
 - List of cities with avaiable weather information
 - Information of a single city with its weather information
 - Filtered information by date periods about a single city with its wather information
+
+## We have some tests already
+
+Run `npm test` to test the existent modules
