@@ -1,4 +1,4 @@
-const data = require( './data/weather_list.json' )
+const data = require( '../data/weather_list.json' )
     , weather = {};
 
 weather.findByCityId = (cityId) => {

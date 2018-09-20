@@ -1,4 +1,4 @@
-const data = require( './data/city_list.json' )
+const data = require( '../data/city_list.json' )
     , cities = {};
 
 cities.findAll = () => data;
