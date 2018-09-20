@@ -2,7 +2,7 @@
  * This test is for the cities module
  */
 
-const cities = require( '../cities' )
+const cities = require( '../libs/cities' )
     , chai = require('chai')
     , assert = chai.assert;
 
