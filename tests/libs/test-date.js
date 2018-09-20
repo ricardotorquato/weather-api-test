@@ -2,7 +2,7 @@
  * This test is for the date module
  */
 
-const date = require( '../libs/date' )
+const date = require( '../../libs/date' )
     , chai = require('chai')
     , assert = chai.assert;
 

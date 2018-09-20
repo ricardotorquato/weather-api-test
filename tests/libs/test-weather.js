@@ -2,7 +2,7 @@
  * This test is for the weather module
  */
 
-const weather = require( '../libs/weather' )
+const weather = require( '../../libs/weather' )
     , chai = require('chai')
     , assert = chai.assert;
 
