@@ -20,14 +20,26 @@ describe('Testing retrieving data from weather module', function () {
       });
 
     it('should allow start and end date to filter the weather information', function () {
-        assert.equal( weather.findByCityId(3992619, '2017-03-12', '2017-03-21').length, 9 );
+        const params = { 
+            startDate : '2017-03-12', 
+            endDate   : '2017-03-21'
+        };
+        assert.equal( weather.findByCityId(3992619, params).length, 9 );
       });
     
     it('should throws errors on invalid date format', function () {
-        assert.throws( () => weather.findByCityId(3992619, '12/03/2017', '21/03/2017') );
+        const params = { 
+            startDate : '12/03/2017', 
+            endDate   : '21/03/2017'
+        };
+        assert.throws( () => weather.findByCityId(3992619, params) );
       });
     
     it('should throws errors on invalid date value', function () {
-        assert.throws( () => weather.findByCityId(3992619, '2017-03-32', '2017-04-32') );
+        const params = { 
+            startDate : '2017-03-32', 
+            endDate   : '2017-04-32'
+        };
+        assert.throws( () => weather.findByCityId(3992619, params) );
       });
 });
