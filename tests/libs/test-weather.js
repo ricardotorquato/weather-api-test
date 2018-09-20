@@ -12,11 +12,11 @@ describe('Testing retrieving data from weather module', function () {
       });
 
     it('should not find information with this id', function () {
-        assert.notExists( weather.findByCityId(1) );
+        assert.equal( weather.findByCityId(1).length, 0 );
       });
     
     it('should not find information with a string as id', function () {
-        assert.notExists( weather.findByCityId('3992619') );
+        assert.equal( weather.findByCityId('3992619'), 0 );
       });
 
     it('should allow start and end date to filter the weather information', function () {
