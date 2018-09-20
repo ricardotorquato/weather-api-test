@@ -1,5 +1,5 @@
 /*
- * This test is for the cities module
+ * This test is for the weather module
  */
 
 const weather = require( '../libs/weather' )
