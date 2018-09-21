@@ -1,8 +1,8 @@
 const date = {};
 
-date.isFormatValid = (myDate) => /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(myDate);
+date.isFormatValid = myDate => /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(myDate);
 
-date.isValid = (myDate) => {
+date.isValid = myDate => {
     
     if ( !date.isFormatValid(myDate) ) {
         throw new Error('Invalid date format. Use yyyy-mm-dd');
@@ -11,7 +11,7 @@ date.isValid = (myDate) => {
     return !isNaN(Date.parse(myDate));
 };
 
-date.toTimestamp = (myDate) => {
+date.toTimestamp = myDate => {
     if ( !date.isFormatValid(myDate) ) {
         throw new Error('Invalid date format. Use yyyy-mm-dd format.');
     }
