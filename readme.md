@@ -10,6 +10,14 @@ The idea is provide:
 - Information of a single city with its weather information
 - Filtered information by date periods about a single city with its wather information
 
-## We have some tests already
+## Installing the dependencies
+
+Please execute `npm i` before try the project
+
+## Testing the application
 
 Run `npm test` to test the existent modules
+
+## Starting the server
+
+Run `npm start` to start the server on `http://localhost:3000`
