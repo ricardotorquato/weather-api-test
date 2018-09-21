@@ -2,9 +2,23 @@
  * This test is for the weather module
  */
 
-const weather = require( '../../libs/weather' )('mock/')
-    , chai = require('chai')
-    , assert = chai.assert;
+const chai = require('chai')
+    , assert = chai.assert
+    , mockery = require( 'mockery' );
+
+let weather;
+
+before( () => {
+    mockery.enable({
+        warnOnUnregistered: false
+    });
+
+    mockery.registerMock('../data/weather_list.json', require( '../mock_data/weather.json' ));
+
+    weather = require( '../../libs/weather' );
+});
+
+after( () => { mockery.disable(); } );
 
 describe('Testing retrieving data from weather module', function () {
     it('should retrieve all weather information of a city', function () {
