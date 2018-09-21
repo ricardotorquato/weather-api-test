@@ -78,7 +78,7 @@ describe('Testing retrieving data from cities related to weather', function () {
             endDate   : '21/03/2017'
         };
 
-        assert.throws( () => cities.findWithWeather(params) );
+        assert.throws( () => cities.findWithWeather(params).all() );
       });
 
     it('should throws error because of invalid date value', function () {
@@ -87,6 +87,6 @@ describe('Testing retrieving data from cities related to weather', function () {
             endDate   : '2017-03-32'
         };
 
-        assert.throws( () => cities.findWithWeather(params) );
+        assert.throws( () => cities.findWithWeather(params).all() );
       });
 });
