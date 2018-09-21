@@ -19,4 +19,6 @@ weather.findByCityId = (cityId, { startDate, endDate } = {}) => {
     return [];
 }
 
+weather.getAllCitiesId = () => [];
+
 module.exports = weather;

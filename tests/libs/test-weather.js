@@ -42,4 +42,8 @@ describe('Testing retrieving data from weather module', function () {
         };
         assert.throws( () => weather.findByCityId(3992619, params) );
       });
+    
+    it('should return a list of cities ids avaiables', function () {
+        assert.equal( weather.getAllCitiesId().length, 2 );
+      });
 });
