@@ -2,9 +2,24 @@
  * This test is for the cities module
  */
 
-const cities = require( '../../libs/cities' )('mock/')
-    , chai = require('chai')
-    , assert = chai.assert;
+const chai = require('chai')
+    , assert = chai.assert
+    , mockery = require( 'mockery' );
+
+let cities;
+
+before( () => {
+    mockery.enable({
+        warnOnUnregistered: false
+    });
+
+    mockery.registerMock('../data/city_list.json', require( '../mock_data/city.json' ));
+    mockery.registerMock('../data/weather_list.json', require( '../mock_data/weather.json' ));
+
+    cities = require( '../../libs/cities' );
+});
+
+after( () => { mockery.disable(); } );
 
 describe('Testing retrieving data from cities module', function () {
     it('should retrieve all the cities of the city_list.json file', function () {
