@@ -1,5 +1,31 @@
 [
     {
+      "id": 3531732,
+      "coord": {
+        "lon": -90.533333,
+        "lat": 19.85
+      },
+      "country": "MX",
+      "geoname": {
+        "cl": "P",
+        "code": "PPLA",
+        "parent": 6942858
+      },
+      "name": "Campeche",
+      "stat": {
+        "level": 1.0,
+        "population": 205212
+      },
+      "stations": [
+        {
+          "id": 3968,
+          "dist": 4,
+          "kf": 1
+        }
+      ],
+      "zoom": 7
+    },
+    {
       "id": 3992619,
       "coord": {
         "lon": -100.51667,
@@ -49,31 +75,5 @@
         }
       ],
       "zoom": 8
-    },
-    {
-      "id": 3531732,
-      "coord": {
-        "lon": -90.533333,
-        "lat": 19.85
-      },
-      "country": "MX",
-      "geoname": {
-        "cl": "P",
-        "code": "PPLA",
-        "parent": 6942858
-      },
-      "name": "Campeche",
-      "stat": {
-        "level": 1.0,
-        "population": 205212
-      },
-      "stations": [
-        {
-          "id": 3968,
-          "dist": 4,
-          "kf": 1
-        }
-      ],
-      "zoom": 7
     }
 ]

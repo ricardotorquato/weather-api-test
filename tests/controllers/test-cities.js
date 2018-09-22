@@ -1,10 +1,11 @@
 const expect = require( 'chai' ).expect
+    , assert = require( 'chai' ).assert
     , httpMocks = require( 'node-mocks-http' )
     , mockery = require( 'mockery' );
 
 // Useful functions
 const buildResponse = () => httpMocks.createResponse({eventEmitter: require('events').EventEmitter})
-    , errorNotExpected = (err) => { expect( err ).to.not.exist(); };
+    , errorNotExpected = done => err => { expect( err ).to.not.exist(); done() };
 
 let router;
 
@@ -23,7 +24,7 @@ after( () => { mockery.disable(); } );
 
 describe('Testing cities controller', function () {
     describe('Testing get method', function () {
-        it('should return a valid json', function () {
+        it('should return a valid json', function (done) {
             const response = buildResponse();
 
             const request = httpMocks.createRequest({
@@ -33,12 +34,13 @@ describe('Testing cities controller', function () {
 
             response.on( 'end', () => {
                 expect( () => JSON.parse(response._getData()) ).to.not.throw();
+                done();
             });
 
             router.handle(request, response, errorNotExpected);
         });
 
-        it('should returns all cities', function () {
+        it('should returns all cities', function (done) {
             const response = buildResponse();
 
             const request = httpMocks.createRequest({
@@ -46,14 +48,15 @@ describe('Testing cities controller', function () {
                 url: '/v1/cities'
             });
 
-            response.on( 'end', () => {
-                expect(response._getData()).to.be.equal( JSON.stringify(require('../mock_data/cities.json')) );
-            });
+            response.on( 'end', function() {
+                assert.equal( response._getData(), JSON.stringify( require( '../mock_data/cities.json' ) ) );
+                done();
+            }).on( 'error', errorNotExpected );
 
             router.handle(request, response, errorNotExpected);
         });
 
-        it('should allow filter to retrieve just the cities that has weather information', function () {
+        it('should allow filter to retrieve just the cities that has weather information', function (done) {
             const response = buildResponse();
 
             const request = httpMocks.createRequest({
@@ -62,10 +65,11 @@ describe('Testing cities controller', function () {
             });
 
             response.on( 'end', () => {
-                expect(response._getData()).to.be.equal( JSON.stringify(require('../mock_data/citiesHasWeather.json')) );
+                assert.equal( response._getData(), JSON.stringify( require( '../mock_data/citiesHasWeather.json' ) ) );
+                done();
             });
 
-            router.handle(request, response, errorNotExpected);
+            router.handle(request, response, errorNotExpected(done));
         });
     });
 
