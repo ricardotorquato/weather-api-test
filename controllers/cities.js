@@ -7,6 +7,8 @@ controller.get = async (req, res, next) => {
     res.json(citiesData);
 };
 
-controller.getById = async (req, res, next) => { throw new Error('getById not implemented yet') };
+controller.getById = async (req, res, next) => {
+    res.json( cities.findById( parseInt( req.params.id ) ) );
+};
 
 module.exports = controller;
