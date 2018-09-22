@@ -1,0 +1,79 @@
+[
+    {
+      "id": 3992619,
+      "coord": {
+        "lon": -100.51667,
+        "lat": 28.700001
+      },
+      "country": "MX",
+      "geoname": {
+        "cl": "P",
+        "code": "PPL",
+        "parent": 4013674
+      },
+      "name": "Piedras Negras",
+      "stat": {
+        "level": 1.0,
+        "population": 139619
+      },
+      "stations": [
+        {
+          "id": 2575,
+          "dist": 80,
+          "kf": 1
+        },
+        {
+          "id": 2598,
+          "dist": 84,
+          "kf": 1
+        },
+        {
+          "id": 2618,
+          "dist": 94,
+          "kf": 1
+        },
+        {
+          "id": 2666,
+          "dist": 77,
+          "kf": 1
+        },
+        {
+          "id": 4007,
+          "dist": 8,
+          "kf": 1
+        },
+        {
+          "id": 28781,
+          "dist": 66,
+          "kf": 1
+        }
+      ],
+      "zoom": 8
+    },
+    {
+      "id": 3531732,
+      "coord": {
+        "lon": -90.533333,
+        "lat": 19.85
+      },
+      "country": "MX",
+      "geoname": {
+        "cl": "P",
+        "code": "PPLA",
+        "parent": 6942858
+      },
+      "name": "Campeche",
+      "stat": {
+        "level": 1.0,
+        "population": 205212
+      },
+      "stations": [
+        {
+          "id": 3968,
+          "dist": 4,
+          "kf": 1
+        }
+      ],
+      "zoom": 7
+    }
+]

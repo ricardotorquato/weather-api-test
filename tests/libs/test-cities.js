@@ -13,7 +13,7 @@ before( () => {
         warnOnUnregistered: false
     });
 
-    mockery.registerMock('../data/city_list.json', require( '../mock_data/city.json' ));
+    mockery.registerMock('../data/city_list.json', require( '../mock_data/cities.json' ));
     mockery.registerMock('../data/weather_list.json', require( '../mock_data/weather.json' ));
 
     cities = require( '../../libs/cities' );

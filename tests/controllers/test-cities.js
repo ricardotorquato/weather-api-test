@@ -13,7 +13,7 @@ before( () => {
         warnOnUnregistered: false
     });
 
-    mockery.registerMock('../data/city_list.json', require( '../mock_data/city.json' ));
+    mockery.registerMock('../data/city_list.json', require( '../mock_data/cities.json' ));
     mockery.registerMock('../data/weather_list.json', require( '../mock_data/weather.json' ));
 
     router = require( '../../routes' );
@@ -47,18 +47,25 @@ describe('Testing cities controller', function () {
             });
 
             response.on( 'end', () => {
-                expect(response._getData()).to.be.equal( JSON.stringify(require('../mock_data/city.json')) );
+                expect(response._getData()).to.be.equal( JSON.stringify(require('../mock_data/cities.json')) );
             });
 
             router.handle(request, response, errorNotExpected);
         });
 
         it('should allow filter to retrieve just the cities that has weather information', function () {
+            const response = buildResponse();
 
-        });
+            const request = httpMocks.createRequest({
+                method: 'GET',
+                url: '/v1/cities?hasWeather'
+            });
 
-        it('should return 500 error when weather param has invalid value', function () {
+            response.on( 'end', () => {
+                expect(response._getData()).to.be.equal( JSON.stringify(require('../mock_data/citiesHasWeather.json')) );
+            });
 
+            router.handle(request, response, errorNotExpected);
         });
     });
 
