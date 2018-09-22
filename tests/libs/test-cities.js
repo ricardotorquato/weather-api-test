@@ -95,8 +95,14 @@ describe('Citties lib', function () {
     });
 
     describe('Testing retrieving data from cities module with geolocation', function () {
-        it('should allows filter using a latitude and longitude point combined with a distance delimiter', function () {
-            
+        it('should allows filter using a latitude and longitude point combined with a distance delimiter in meters', function () {
+            const params = {
+                lat: 19.85148,
+                lon: -90.52724,
+                distance: 5000
+            };
+
+            assert.equal( cities.findAll(params).length, 1 );
         });
     });
 });
