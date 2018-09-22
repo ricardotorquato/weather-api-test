@@ -15,11 +15,7 @@ cities.findWithWeather = (params = {}) => {
     // Applying the filter
     const myData = data.filter(filterByCitiesIdsFn(citiesId));
 
-    find.all = () => myData.map( d => {
-        d.weather = weather.findByCityId(d.id, params);
-
-        return d;
-    });
+    find.all = () => myData;
 
     find.byId = id => {
         const city = myData.filter( d => d.id === id)[0];
