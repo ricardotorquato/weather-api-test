@@ -12,7 +12,7 @@ The idea is provide:
 
 ## System dependencies
 
-To run this project you will need `npm`, `node` (version 8) and if you want to run the tests you will need `mocha`.
+To run this project you will need `npm`, `node` (version 8) and `mocha` for tests.
 
 To install `npm` go to `https://www.npmjs.com/get-npm`.
 
