@@ -109,5 +109,12 @@ describe('Testing cities controller', function () {
                 .set('Accept', 'application/json')
                 .expect(500, done)
         });
+
+        it('should return 500 error when the start date is greather than end date', function (done) {
+            request(app)
+                .get('/v1/cities/3531732?withWeather&startDate=2017-03-21&endDate=2017-03-12')
+                .set('Accept', 'application/json')
+                .expect(500, done)
+        });
     });
 });
