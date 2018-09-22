@@ -107,8 +107,7 @@ describe('Testing cities controller', function () {
             request(app)
                 .get('/v1/cities/3531732?withWeather&startDate=2017-03-32&endDate=2017-03-35')
                 .set('Accept', 'application/json')
-                .expect('Content-Type', /json/)
-                .expect(500, done);
+                .expect(500, done)
         });
     });
 });
