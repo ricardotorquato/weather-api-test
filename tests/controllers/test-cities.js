@@ -38,6 +38,17 @@ describe('Testing cities controller', function () {
                 .expect(200, done);
         });
 
+        it('should returns all cities that fits the filter by coordinates', function (done) {
+            request(app)
+                .get('/api/v1/cities?latitude=19.85148,longitude=-90.52724,km=5')
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(res => {
+                    assert.equal(res.body.length, 1)
+                })
+                .expect(200, done);
+        });
+
         it('should allow filter to retrieve just the cities that has weather information', function (done) {
             request(app)
                 .get('/api/v1/cities?hasWeather')
@@ -45,6 +56,17 @@ describe('Testing cities controller', function () {
                 .expect('Content-Type', /json/)
                 .expect(res => {
                     assert.equal(res.body.length, 2)
+                })
+                .expect(200, done);
+        });
+
+        it('should allow filter to retrieve just the cities that has weather information and fits the filter by coordinates', function (done) {
+            request(app)
+                .get('/api/v1/cities?hasWeather&latitude=19.85148,longitude=-90.52724,km=5')
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(res => {
+                    assert.equal(res.body.length, 1)
                 })
                 .expect(200, done);
         });
