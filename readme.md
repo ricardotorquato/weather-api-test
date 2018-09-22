@@ -10,7 +10,13 @@ The idea is provide:
 - Information of a single city with its weather information
 - Filtered information by date periods about a single city with its wather information
 
-## System dependencies
+## Running with docker
+
+If you have docker in you environment you can just use `docker-compose up` to run the application on `http://localhost:3000`
+
+## Running without docker
+
+### System dependencies
 
 To run this project you will need `npm`, `node` (version 8) and `mocha` for tests.
 
@@ -22,15 +28,15 @@ You can use `npm i -g n` to install `n` package and then use `n 8` command to in
 
 To install mocha you can use `npm i -g mocha`
 
-## Installing the project dependencies
+### Installing the project dependencies
 
 Please execute `npm i` before try the project
 
-## Testing the application
+### Testing the application
 
 Run `npm test` to test the existent modules
 
-## Starting the server
+### Starting the server
 
 Run `npm start` to start the server on `http://localhost:3000`
 
