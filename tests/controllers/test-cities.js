@@ -40,7 +40,7 @@ describe('Testing cities controller', function () {
 
         it('should returns all cities that fits the filter by coordinates', function (done) {
             request(app)
-                .get('/api/v1/cities?latitude=19.85148,longitude=-90.52724,km=5')
+                .get('/api/v1/cities?latitude=19.85148&longitude=-90.52724&km=5')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(res => {
@@ -62,7 +62,7 @@ describe('Testing cities controller', function () {
 
         it('should allow filter to retrieve just the cities that has weather information and fits the filter by coordinates', function (done) {
             request(app)
-                .get('/api/v1/cities?hasWeather&latitude=19.85148,longitude=-90.52724,km=5')
+                .get('/api/v1/cities?hasWeather&latitude=19.85148&longitude=-90.52724&km=5')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(res => {
