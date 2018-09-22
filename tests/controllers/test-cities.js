@@ -21,7 +21,7 @@ describe('Testing cities controller', function () {
     describe('Testing get method', function () {
         it('should return a valid json', function (done) {
             request(app)
-                .get('/v1/cities')
+                .get('/api/v1/cities')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(200, done);
@@ -29,7 +29,7 @@ describe('Testing cities controller', function () {
 
         it('should returns all cities', function (done) {
             request(app)
-                .get('/v1/cities')
+                .get('/api/v1/cities')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(res => {
@@ -40,7 +40,7 @@ describe('Testing cities controller', function () {
 
         it('should allow filter to retrieve just the cities that has weather information', function (done) {
             request(app)
-                .get('/v1/cities?hasWeather')
+                .get('/api/v1/cities?hasWeather')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(res => {
@@ -53,7 +53,7 @@ describe('Testing cities controller', function () {
     describe('Testing getById method', function () {
         it('should return a valid json', function (done) {
             request(app)
-                .get('/v1/cities/3531732')
+                .get('/api/v1/cities/3531732')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(200, done);
@@ -61,7 +61,7 @@ describe('Testing cities controller', function () {
 
         it('should return a city', function (done) {
             request(app)
-                .get('/v1/cities/3531732')
+                .get('/api/v1/cities/3531732')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(res => {
@@ -72,7 +72,7 @@ describe('Testing cities controller', function () {
 
         it('should return a city with its weather', function (done) {
             request(app)
-                .get('/v1/cities/3531732?withWeather')
+                .get('/api/v1/cities/3531732?withWeather')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(res => {
@@ -84,7 +84,7 @@ describe('Testing cities controller', function () {
 
         it('should allow filters by date and retrieve the weather information based on that filter', function (done) {
             request(app)
-                .get('/v1/cities/3531732?withWeather&startDate=2017-03-12&endDate=2017-03-21')
+                .get('/api/v1/cities/3531732?withWeather&startDate=2017-03-12&endDate=2017-03-21')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(res => {
@@ -97,7 +97,7 @@ describe('Testing cities controller', function () {
 
         it('should return 404 when there is no city with the id', function (done) {
             request(app)
-                .get('/v1/cities/1')
+                .get('/api/v1/cities/1')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
                 .expect(404, done);
@@ -105,14 +105,14 @@ describe('Testing cities controller', function () {
 
         it('should return 500 error when the dates params have invalid value', function (done) {
             request(app)
-                .get('/v1/cities/3531732?withWeather&startDate=2017-03-32&endDate=2017-03-35')
+                .get('/api/v1/cities/3531732?withWeather&startDate=2017-03-32&endDate=2017-03-35')
                 .set('Accept', 'application/json')
                 .expect(500, done)
         });
 
         it('should return 500 error when the start date is greather than end date', function (done) {
             request(app)
-                .get('/v1/cities/3531732?withWeather&startDate=2017-03-21&endDate=2017-03-12')
+                .get('/api/v1/cities/3531732?withWeather&startDate=2017-03-21&endDate=2017-03-12')
                 .set('Accept', 'application/json')
                 .expect(500, done)
         });
