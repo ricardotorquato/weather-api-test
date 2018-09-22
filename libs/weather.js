@@ -7,6 +7,10 @@ weather.findByCityId = (cityId, { startDate, endDate } = {}) => {
     // Tip: the 86390 is for 23:59:59 that I need to be all day
     const endDateFilter = typeof(endDate) === 'string' ? date.toTimestamp( endDate ) + 86390 : Infinity;
 
+    if ( startDateFilter > endDateFilter ) {
+        throw new Error('Start date should be less or equal end date');
+    }
+
     myData = data.filter( w => w.cityId === cityId )[0];
 
     if ( typeof(myData) === 'object' && typeof(myData.data) === 'object' ) {
