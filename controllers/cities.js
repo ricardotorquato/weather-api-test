@@ -28,8 +28,8 @@ controller.getById = async (req, res, next) => {
 
         try {
             city = cities.findWithWeather( params ).byId( id );
-        } catch(err) {
-            res.status(500).json(err);
+        } catch( err ) {
+            res.status(500).json(err.message);
         }
     }
 

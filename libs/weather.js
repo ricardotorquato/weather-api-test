@@ -1,5 +1,6 @@
 const data = require( '../data/weather_list.json' )
     , date = require( './date' )
+    , InvalidDateOrder = require( './errors' ).InvalidDateOrder
     , weather = {};
 
 weather.findByCityId = (cityId, { startDate, endDate } = {}) => {
@@ -8,7 +9,7 @@ weather.findByCityId = (cityId, { startDate, endDate } = {}) => {
     const endDateFilter = typeof(endDate) === 'string' ? date.toTimestamp( endDate ) + 86390 : Infinity;
 
     if ( startDateFilter > endDateFilter ) {
-        throw new Error('Start date should be less or equal end date');
+        throw new InvalidDateOrder('Start date should be less or equal end date');
     }
 
     myData = data.filter( w => w.cityId === cityId )[0];
