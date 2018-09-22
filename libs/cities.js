@@ -1,8 +1,26 @@
 const data = require( '../data/city_list.json' )
     , weather = require( './weather' )
+    , geolib = require( 'geolib' )
     ,cities = {};
 
-cities.findAll = () => data;
+cities.findAll = params => {
+    if ( 
+        params !== undefined
+        && params.lat !== undefined
+        && params.lon !== undefined
+        && params.distance !== undefined
+    ) {
+        checkDistance = meters => city => geolib.getDistance(
+            { latitude: params.lat, longitude: params.lon },
+            { latitude: city.coord.lat, longitude: city.coord.lon }
+        ) <= meters;
+
+        return data.filter( checkDistance(params.distance) );
+    }
+
+    return data;
+};
+
 cities.findById = id => data.filter( city => city.id === id )[0];
 
 cities.findWithWeather = (params = {}) => {
