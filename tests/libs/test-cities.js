@@ -46,6 +46,18 @@ describe('Citties lib', function () {
             
             assert.equal( data.length, 2 );
         });
+
+        it('should retrieve only the cities with weather informed and geolocation', function () {
+            const params = {
+                lat: 19.85148,
+                lon: -90.52724,
+                distance: 5000
+            };
+
+            const data = cities.findWithWeather(params).all();
+            
+            assert.equal( data.length, 1 );
+        });
         
         it('should retrieve just one city with its weather information', function () {
             const city = cities.findWithWeather().byId(3992619);

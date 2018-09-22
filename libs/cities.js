@@ -30,13 +30,11 @@ cities.findWithWeather = (params = {}) => {
     const citiesId = weather.getAllCitiesId();
     // This function receives an id list and returns another function to filter using this list
     filterByCitiesIdsFn = ids => d => ids.indexOf(d.id) > -1;
-    // Applying the filter
-    const myData = data.filter(filterByCitiesIdsFn(citiesId));
 
-    find.all = () => myData;
+    find.all = () => cities.findAll(params).filter(filterByCitiesIdsFn(citiesId));
 
     find.byId = id => {
-        const city = myData.filter( d => d.id === id)[0];
+        const city = data.filter( d => d.id === id)[0];
 
         if ( typeof(city) === 'object' ) {
             city.weather = weather.findByCityId(id, params);
