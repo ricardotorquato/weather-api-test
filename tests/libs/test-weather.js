@@ -9,16 +9,8 @@ const chai = require('chai')
 let weather;
 
 before( () => {
-    mockery.enable({
-        warnOnUnregistered: false
-    });
-
-    mockery.registerMock('../data/weather_list.json', require( '../mock_data/weather.json' ));
-
     weather = require( '../../libs/weather' );
 });
-
-after( () => { mockery.disable(); } );
 
 describe('Weather lib', function () {
     describe('Testing retrieving data from weather module', function () {

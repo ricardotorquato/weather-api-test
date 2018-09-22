@@ -8,18 +8,9 @@ const chai = require('chai')
 
 let cities;
 
-before( () => {
-    mockery.enable({
-        warnOnUnregistered: false
-    });
-
-    mockery.registerMock('../data/city_list.json', require( '../mock_data/cities.json' ));
-    mockery.registerMock('../data/weather_list.json', require( '../mock_data/weather.json' ));
-
-    cities = require( '../../libs/cities' );
+before(() => {
+    cities = require( '../../libs/cities' );    
 });
-
-after( () => { mockery.disable(); } );
 
 describe('Citties lib', function () {
     describe('Testing retrieving data from cities module', function () {

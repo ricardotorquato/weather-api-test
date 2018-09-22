@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "mocha --recursive tests && node index.js",
-    "test": "mocha --recursive tests"
+    "start": "mocha tests/test-spec.js tests/** && node index.js",
+    "test": "mocha tests/test-spec.js tests/**"
   },
   "keywords": [],
   "author": "",

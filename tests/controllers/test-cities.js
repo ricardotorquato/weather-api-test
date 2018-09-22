@@ -1,21 +1,11 @@
 const assert = require( 'chai' ).assert
-    , mockery = require( 'mockery' )
     , request = require( 'supertest' );
 
 let app;
 
-before( () => {
-    mockery.enable({
-        warnOnUnregistered: false
-    });
-
-    mockery.registerMock('../data/city_list.json', require( '../mock_data/cities.json' ));
-    mockery.registerMock('../data/weather_list.json', require( '../mock_data/weather.json' ));
-
+before(() => {
     app = require( '../../app' );
 });
-
-after( () => { mockery.disable(); } );
 
 describe('Testing cities controller', function () {
     describe('Testing get method', function () {
