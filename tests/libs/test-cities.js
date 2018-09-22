@@ -40,32 +40,10 @@ describe('Testing retrieving data from cities module', function () {
 });
 
 describe('Testing retrieving data from cities related to weather', function () {
-    it('should retrieve only the cities with weather informed and their weather information', function () {
+    it('should retrieve only the cities with weather informed', function () {
         const data = cities.findWithWeather().all();
         
-        // We should have two cities with weather
         assert.equal( data.length, 2 );
-        
-        // Both should have the "weather" node
-        assert.equal( data.filter( d => typeof(d.weather) === 'object').length, 2 );
-      });
-  
-    it('should retrieve only the cities with weather informed and their weather information filtered by range of date', function () {
-          const params = { 
-              startDate : '2017-03-12', 
-              endDate   : '2017-03-21'
-          };
-
-          const data = cities.findWithWeather(params).all();
-
-          // We should still have two cities with weather
-          assert.equal( data.length, 2 );
-        
-          // Both should have the "weather" node
-          assert.equal( data.filter( d => typeof(d.weather) === 'object').length, 2 );
-
-          // The weather node filtered should have less items
-          assert.equal( data.filter( d => d.weather.length === 9 ).length, 2 );
       });
     
     it('should retrieve just one city with its weather information', function () {
@@ -93,7 +71,7 @@ describe('Testing retrieving data from cities related to weather', function () {
             endDate   : '21/03/2017'
         };
 
-        assert.throws( () => cities.findWithWeather(params).all() );
+        assert.throws( () => cities.findWithWeather(params).byId(3992619) );
       });
 
     it('should throws error because of invalid date value', function () {
@@ -102,6 +80,6 @@ describe('Testing retrieving data from cities related to weather', function () {
             endDate   : '2017-03-32'
         };
 
-        assert.throws( () => cities.findWithWeather(params).all() );
+        assert.throws( () => cities.findWithWeather(params).byId(3992619) );
       });
 });
