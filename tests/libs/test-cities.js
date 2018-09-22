@@ -82,4 +82,13 @@ describe('Testing retrieving data from cities related to weather', function () {
 
         assert.throws( () => cities.findWithWeather(params).byId(3992619) );
       });
+    
+    it('should throws error because start date is greather than end date', function () {
+        const params = { 
+            startDate : '2017-03-21', 
+            endDate   : '2017-03-12'
+        };
+
+        assert.throws( () => cities.findWithWeather(params).byId(3992619) );
+      });
 });
