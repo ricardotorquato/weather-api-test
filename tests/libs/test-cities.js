@@ -24,11 +24,11 @@ after( () => { mockery.disable(); } );
 describe('Citties lib', function () {
     describe('Testing retrieving data from cities module', function () {
         it('should retrieve all the cities of the city_list.json file', function () {
-            assert.equal( cities.findAll().length, 48 );
+            assert.equal( cities.findAll().length, 3 );
         });
 
         it('should retrieve the Campeche city of the city_list.json', function () {
-            assert.equal( cities.findById(3531732).name, "Campeche" );
+            assert.equal( cities.findById(123).name, "Campeche" );
         });
 
         it('should not find any city with this id', function () {
@@ -36,7 +36,7 @@ describe('Citties lib', function () {
         });
         
         it('should not find any city with a string as id', function () {
-            assert.notExists( cities.findById('3531732') );
+            assert.notExists( cities.findById('123') );
         });
     });
 
@@ -60,7 +60,7 @@ describe('Citties lib', function () {
         });
         
         it('should retrieve just one city with its weather information', function () {
-            const city = cities.findWithWeather().byId(3992619);
+            const city = cities.findWithWeather().byId(789);
 
             assert.exists( city.weather );
         });
@@ -71,7 +71,7 @@ describe('Citties lib', function () {
                 endDate   : '2017-03-21'
             };
 
-            const city = cities.findWithWeather(params).byId(3992619);
+            const city = cities.findWithWeather(params).byId(789);
 
             assert.exists( city );
             assert.exists( city.weather );
@@ -84,7 +84,7 @@ describe('Citties lib', function () {
                 endDate   : '21/03/2017'
             };
 
-            assert.throws( () => cities.findWithWeather(params).byId(3992619) );
+            assert.throws( () => cities.findWithWeather(params).byId(789) );
         });
 
         it('should throws error because of invalid date value', function () {
@@ -93,7 +93,7 @@ describe('Citties lib', function () {
                 endDate   : '2017-03-32'
             };
 
-            assert.throws( () => cities.findWithWeather(params).byId(3992619) );
+            assert.throws( () => cities.findWithWeather(params).byId(789) );
         });
         
         it('should throws error because start date is greather than end date', function () {
@@ -102,7 +102,7 @@ describe('Citties lib', function () {
                 endDate   : '2017-03-12'
             };
 
-            assert.throws( () => cities.findWithWeather(params).byId(3992619) );
+            assert.throws( () => cities.findWithWeather(params).byId(789) );
         });
     });
 

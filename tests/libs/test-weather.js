@@ -23,7 +23,7 @@ after( () => { mockery.disable(); } );
 describe('Weather lib', function () {
     describe('Testing retrieving data from weather module', function () {
         it('should retrieve all weather information of a city', function () {
-            assert.equal( weather.findByCityId(3992619).length, 16 );
+            assert.equal( weather.findByCityId(789).length, 16 );
         });
 
         it('should not find information with this id', function () {
@@ -31,7 +31,7 @@ describe('Weather lib', function () {
         });
         
         it('should not find information with a string as id', function () {
-            assert.equal( weather.findByCityId('3992619'), 0 );
+            assert.equal( weather.findByCityId('789'), 0 );
         });
 
         it('should allow start and end date to filter the weather information', function () {
@@ -39,7 +39,7 @@ describe('Weather lib', function () {
                 startDate : '2017-03-12', 
                 endDate   : '2017-03-21'
             };
-            assert.equal( weather.findByCityId(3992619, params).length, 9 );
+            assert.equal( weather.findByCityId(789, params).length, 9 );
         });
         
         it('should throws errors on invalid date format', function () {
@@ -47,7 +47,7 @@ describe('Weather lib', function () {
                 startDate : '12/03/2017', 
                 endDate   : '21/03/2017'
             };
-            assert.throws( () => weather.findByCityId(3992619, params) );
+            assert.throws( () => weather.findByCityId(789, params) );
         });
         
         it('should throws errors on invalid date value', function () {
@@ -55,7 +55,7 @@ describe('Weather lib', function () {
                 startDate : '2017-03-32', 
                 endDate   : '2017-04-32'
             };
-            assert.throws( () => weather.findByCityId(3992619, params) );
+            assert.throws( () => weather.findByCityId(789, params) );
         });
         
         it('should return a list of cities ids avaiables', function () {
