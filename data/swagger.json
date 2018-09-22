@@ -1,0 +1,246 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Weather API Test Documentation",
+      "description": ""
+    },
+    "host": "localhost:3000",
+    "basePath": "/v1",
+    "tags": [
+      {
+        "name": "Cities",
+        "description": "API for cities"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/cities": {
+        "parameters": [
+            {
+                "name": "hasWeather",
+                "in": "query",
+                "required": false,
+                "description": "If you need to retrieve just the cities that has weather information",
+                "type": "boolean",
+                "enum": [true],
+                "allowEmptyValue": true
+            }
+        ],
+        "get": {
+          "tags": [
+            "Cities"
+          ],
+          "summary": "Get all cities in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Cities"
+              }
+            }
+          }
+        }
+      },
+      "/cities/{cityId}": {
+        "parameters": [
+          {
+            "name": "cityId",
+            "in": "path",
+            "required": true,
+            "description": "ID of city that we want to find",
+            "type": "string"
+          },
+          {
+              "name": "withWeather",
+              "in": "query",
+              "required": false,
+              "description": "If you need to retrieve weather information",
+              "type": "boolean",
+              "enum": [true],
+              "allowEmptyValue": true
+          },
+          {
+              "name": "startDate",
+              "in": "query",
+              "required": false,
+              "description": "Start date to filter weather information",
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          {
+              "name": "endDate",
+              "in": "query",
+              "required": false,
+              "description": "End date to filter weather information",
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Cities"
+          ],
+          "summary": "Get city with given ID",
+          "responses": {
+            "200": {
+              "description": "City is found",
+              "schema": {
+                "$ref": "#/definitions/City"
+              }
+            },
+            "404": {
+                "description": "City not found"
+            },
+            "500": {
+                "description": "Invalid query params value"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "City": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "examples": [
+              3531732
+            ]
+          },
+          "coord": {
+            "required": [
+              "lon",
+              "lat"
+            ],
+            "properties": {
+              "lon": {
+                "type": "number",
+                "examples": [
+                  -90.533333
+                ]
+              },
+              "lat": {
+                "type": "number",
+                "examples": [
+                  19.85
+                ]
+              }
+            }
+          },
+          "country": {
+            "type": "string",
+            "examples": [
+              "MX"
+            ]
+          },
+          "geoname": {
+            "type": "object",
+            "required": [
+              "cl",
+              "code",
+              "parent"
+            ],
+            "properties": {
+              "cl": {
+                "type": "string",
+                "examples": [
+                  "P"
+                ]
+              },
+              "code": {
+                "type": "string",
+                "examples": [
+                  "PPLA"
+                ]
+              },
+              "parent": {
+                "type": "integer",
+                "examples": [
+                  6942858
+                ]
+              }
+            }
+          },
+          "name": {
+            "type": "string",
+            "examples": [
+              "Campeche"
+            ]
+          },
+          "stat": {
+            "type": "object",
+            "required": [
+              "level",
+              "population"
+            ],
+            "properties": {
+              "level": {
+                "type": "integer",
+                "examples": [
+                  1
+                ]
+              },
+              "population": {
+                "type": "integer",
+                "examples": [
+                  205212
+                ]
+              }
+            }
+          },
+          "stations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "dist",
+                "kf"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "examples": [
+                    3968
+                  ]
+                },
+                "dist": {
+                  "type": "integer",
+                  "examples": [
+                    4
+                  ]
+                },
+                "kf": {
+                  "type": "integer",
+                  "examples": [
+                    1
+                  ]
+                }
+              }
+            }
+          },
+          "zoom": {
+            "type": "integer",
+            "examples": [
+              7
+            ]
+          }
+        }
+      },
+      "Cities": {
+        "type": "array",
+        "items": {
+            "$ref": "#/definitions/City"
+        }
+      }
+    }
+  }
