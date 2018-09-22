@@ -33,6 +33,27 @@
                 "type": "boolean",
                 "enum": [true],
                 "allowEmptyValue": true
+            },
+            {
+              "name": "latitude",
+              "in": "query",
+              "required": false,
+              "description": "If you want to filter by coordinates, here is latitude",
+              "type": "numeric"
+            },
+            {
+              "name": "longitude",
+              "in": "query",
+              "required": false,
+              "description": "If you want to filter by coordinates, here is longitude",
+              "type": "numeric"
+            },
+            {
+              "name": "km",
+              "in": "query",
+              "required": false,
+              "description": "If you want to filter by coordinates, here is distance in km",
+              "type": "numeric"
             }
         ],
         "get": {
